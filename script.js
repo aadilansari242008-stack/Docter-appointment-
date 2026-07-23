@@ -25,3 +25,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+function sendWhatsApp() {
+
+let name = document.querySelector('input[type="text"]').value;
+let email = document.querySelector('input[type="email"]').value;
+let mobile = document.querySelector('input[type="tel"]').value;
+let doctor = document.querySelector('select').value;
+let date = document.querySelector('input[type="date"]').value;
+let time = document.querySelector('input[type="time"]').value;
+let problem = document.querySelector('textarea').value;
+
+let message =
+"📅 New Appointment%0A%0A" +
+"👤 Name: " + name + "%0A" +
+"📧 Email: " + email + "%0A" +
+"📱 Mobile: " + mobile + "%0A" +
+"👨‍⚕️ Doctor: " + doctor + "%0A" +
+"📅 Date: " + date + "%0A" +
+"⏰ Time: " + time + "%0A" +
+"📝 Problem: " + problem;
+
+window.open("https://wa.me/917352585780?text=" + message, "_blank");
+
+}
