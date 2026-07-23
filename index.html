@@ -10,50 +10,48 @@
 <body>
 
 <header>
-    <div class="container">
-        <h1>MediBook</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#doctors">Doctors</a>
-            <a href="#appointment">Appointment</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </div>
+<div class="container">
+<h1>MediBook</h1>
+
+<nav>
+<a href="#">Home</a>
+<a href="#doctors">Doctors</a>
+<a href="#appointment">Appointment</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</div>
 </header>
 
 <section class="hero">
-    <h2>Your Health Comes First</h2>
-    <p>Book appointments with experienced doctors anytime.</p>
 
-    <a href="#appointment">
-        <button>Book Appointment</button>
-    </a>
+<h2>Your Health Comes First</h2>
+
+<p>Book appointments with experienced doctors online.</p>
+
+<a href="#appointment">
+<button>Book Appointment</button>
+</a>
+
 </section>
 
 <section id="doctors" class="doctors">
 
 <h2>Our Specialists</h2>
 
-<div class="doctor-container">
-
 <div class="doctor-card">
 <h3>👨‍⚕️ General Physician</h3>
-<p>Consultation Fee: ₹300</p>
-<button>Book Now</button>
+<p>5 Doctors Available</p>
 </div>
 
 <div class="doctor-card">
 <h3>❤️ Cardiologist</h3>
-<p>Consultation Fee: ₹700</p>
-<button>Book Now</button>
+<p>5 Doctors Available</p>
 </div>
 
 <div class="doctor-card">
 <h3>🦷 Dentist</h3>
-<p>Consultation Fee: ₹500</p>
-<button>Book Now</button>
-</div>
-
+<p>5 Doctors Available</p>
 </div>
 
 </section>
@@ -70,20 +68,61 @@
 
 <input type="tel" placeholder="Mobile Number" required>
 
-<select required>
+<select id="doctor" required>
+
 <option value="">Select Doctor</option>
-<option>General Physician</option>
-<option>Cardiologist</option>
-<option>Dentist</option>
+
+<optgroup label="👨‍⚕️ General Physician">
+<option value="300">Dr. ravisahnkar kumar - ₹300</option>
+<option value="350">Dr. pradeep kumar - ₹350</option>
+<option value="400">Dr. ram eqbal sinha- ₹600</option>
+<option value="450">Dr. sahdullah mansori - ₹300</option>
+<option value="500">Dr. firoz kamar - ₹600</option>
+</optgroup>
+
+<optgroup label="❤️ Cardiologist">
+<option value="700">Dr. Priya Sharma - ₹700</option>
+<option value="800">Dr. Ankit Verma - ₹800</option>
+<option value="900">Dr. Rajesh Mehta - ₹900</option>
+<option value="1000">Dr. Vivek Singh - ₹1000</option>
+<option value="1200">Dr. Sandeep Gupta - ₹1200</option>
+</optgroup>
+
+<optgroup label="🦷 Dentist">
+<option value="500">Dr. dr aswad- ₹50</option>
+<option value="600">Dr. Neha Gupta - ₹600</option>
+<option value="700">Dr. Anjali Verma - ₹700</option>
+<option value="800">Dr. Abhishek Singh - ₹800</option>
+<option value="900">Dr. Riya Sharma - ₹900</option>
+</optgroup>
+
 </select>
 
-<input type="date" required>
-<input type="time" required>
+<p id="fee">Appointment Fee : ₹0</p>
+
+<input type="date" id="date" required>
+
+<select id="time" required>
+<option value="">Select Time Slot</option>
+<option>09:00 AM</option>
+<option>09:30 AM</option>
+<option>10:00 AM</option>
+<option>10:30 AM</option>
+<option>11:00 AM</option>
+<option>11:30 AM</option>
+<option>12:00 PM</option>
+<option>02:00 PM</option>
+<option>02:30 PM</option>
+<option>03:00 PM</option>
+<option>03:30 PM</option>
+<option>04:00 PM</option>
+<option>04:30 PM</option>
+<option>05:00 PM</option>
+</select>
+
 <textarea placeholder="Describe Your Problem"></textarea>
 
-<button type="button" onclick="sendWhatsApp()">
-    Book Appointment
-</button>
+<button type="button" onclick="sendWhatsApp()">Book Appointment</button>
 
 </form>
 
@@ -93,15 +132,15 @@
 
 <h2>MediBook</h2>
 
-<p>Email: support@medibook.com</p>
+<p>📞 +91 7352585780</p>
 
-<p>Phone: +91 7352585780</p>
+<p>📧 support@medibook.com</p>
 
-<p>© 2026 MediBook. All Rights Reserved.</p>
+<p>© 2026 MediBook</p>
 
 </footer>
 
 <script src="script.js"></script>
 
 </body>
-  </html>
+    </html>
