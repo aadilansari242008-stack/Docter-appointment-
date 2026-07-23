@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediBook - Doctor Appointment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <h1>MediBook</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#doctors">Doctors</a>
+            <a href="#appointment">Appointment</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h2>Your Health Comes First</h2>
+    <p>Book appointments with experienced doctors anytime.</p>
+
+    <a href="#appointment">
+        <button>Book Appointment</button>
+    </a>
+</section>
+
+<section id="doctors" class="doctors">
+
+<h2>Our Specialists</h2>
+
+<div class="doctor-container">
+
+<div class="doctor-card">
+<h3>👨‍⚕️ General Physician</h3>
+<p>Consultation Fee: ₹300</p>
+<button>Book Now</button>
+</div>
+
+<div class="doctor-card">
+<h3>❤️ Cardiologist</h3>
+<p>Consultation Fee: ₹700</p>
+<button>Book Now</button>
+</div>
+
+<div class="doctor-card">
+<h3>🦷 Dentist</h3>
+<p>Consultation Fee: ₹500</p>
+<button>Book Now</button>
+</div>
+
+</div>
+
+</section>
+
+<section id="appointment" class="appointment">
+
+<h2>Book Appointment</h2>
+
+<form>
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="email" placeholder="Email Address" required>
+
+<input type="tel" placeholder="Mobile Number" required>
+
+<select required>
+<option value="">Select Doctor</option>
+<option>General Physician</option>
+<option>Cardiologist</option>
+<option>Dentist</option>
+</select>
+
+<input type="date" required>
+
+<textarea placeholder="Describe Your Problem"></textarea>
+
+<button type="submit">Book Appointment</button>
+
+</form>
+
+</section>
+
+<footer id="contact">
+
+<h2>MediBook</h2>
+
+<p>Email: support@medibook.com</p>
+
+<p>Phone: +91 9876543210</p>
+
+<p>© 2026 MediBook. All Rights Reserved.</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
