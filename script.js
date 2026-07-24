@@ -1,7 +1,9 @@
-// Doctor Fee Update
 const doctor = document.getElementById("doctor");
 const fee = document.getElementById("fee");
+const dateInput = document.getElementById("date");
+const timeInput = document.getElementById("time");
 
+// Doctor Fee Update
 doctor.addEventListener("change", function () {
     if (this.value === "") {
         fee.innerHTML = "Appointment Fee : ₹0";
@@ -10,9 +12,7 @@ doctor.addEventListener("change", function () {
     }
 });
 
-// Date Rule (8 AM ke baad next day)
-const dateInput = document.getElementById("date");
-
+// 8 AM Rule
 let today = new Date();
 
 if (today.getHours() >= 8) {
@@ -37,46 +37,61 @@ function sendWhatsApp() {
     let doctorName = doctor.options[doctor.selectedIndex].text;
     let doctorFee = doctor.value;
     let date = dateInput.value;
-    let time = document.getElementById("time").value;
+    let time = timeInput.value;
     let problem = document.querySelector("textarea").value.trim();
 
-    if(name==="" || email==="" || mobile===""){
-        alert("Please fill all details.");
+    if (name === "") {
+        alert("Enter your name.");
         return;
     }
 
-    if(doctor.value===""){
+    if (email === "") {
+        alert("Enter your email.");
+        return;
+    }
+
+    if (mobile === "") {
+        alert("Enter your mobile number.");
+        return;
+    }
+
+    if (doctor.value === "") {
         alert("Please select a doctor.");
         return;
     }
 
-    if(time===""){
-        alert("Please select a time slot.");
+    if (date === "") {
+        alert("Please select appointment date.");
         return;
     }
 
-    let message =let message =
+    if (time === "") {
+        alert("Please select appointment time.");
+        return;
+    }
+
+    let message =
 `🏥 MediBook Appointment
 
-👤 Patient : ${name}
+👤 Patient: ${name}
 
-📧 Email : ${email}
+📱 Mobile: ${mobile}
 
-📱 Mobile : ${mobile}
+📧 Email: ${email}
 
-👨‍⚕️ Doctor : ${doctorName}
+👨‍⚕️ Doctor: ${doctorName}
 
-💰 Fee : ₹${doctorFee}
+💰 Fee: ₹${doctorFee}
 
-📅 Date : ${date}
+📅 Date: ${date}
 
-⏰ Time : ${time}
+⏰ Time: ${time}
 
-📝 Problem : ${problem}`;
+📝 Problem: ${problem}`;
 
-let phone = "917352585780";
+    let phone = "917352585780";
 
-window.open(
-`https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
-"_blank"
-);
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
