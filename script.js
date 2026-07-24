@@ -112,4 +112,19 @@ function sendWhatsApp() {
         encodeURIComponent(message);
 
     window.open(url, "_blank");
-                                      }
+                                      }// Demo Payment Button
+
+document.getElementById("payBtn").addEventListener("click", function () {
+
+    if (doctor.value === "") {
+        alert("Please select a doctor first.");
+        return;
+    }
+
+    alert(
+        "💳 Demo Payment\n\n" +
+        "Consultation Fee : ₹" + doctor.value +
+        "\n\nPayment feature will be activated in the next update."
+    );
+
+});
