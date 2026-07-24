@@ -55,7 +55,7 @@ function sendWhatsApp() {
         return;
     }
 
-    let message =
+    let message =let message =
 `🏥 MediBook Appointment
 
 👤 Patient : ${name}
@@ -72,14 +72,11 @@ function sendWhatsApp() {
 
 ⏰ Time : ${time}
 
+📝 Problem : ${problem}`;
 
+let phone = "917352585780";
 
-    let phone = "917352585780";
-
-    window.open(
-        `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
-        "_blank"
-    );
-
-    alert("Appointment details are ready to send on WhatsApp.");
-}
+window.open(
+`https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+"_blank"
+);
