@@ -1,130 +1,134 @@
-    const doctor = document.getElementById("doctor");
-const fee = document.getElementById("fee");
-const dateInput = document.getElementById("date");
-const timeInput = document.getElementById("time");
+let cart = [];
 
-// Doctor Fee Update
-doctor.addEventListener("change", function () {
-    if (this.value === "") {
-        fee.innerHTML = "Appointment Fee : ₹0";
-    } else {
-        fee.innerHTML = "Appointment Fee : ₹" + this.value;
-    }
-});
+let total = 0;
 
-// 8 AM Rule
-let today = new Date();
 
-if (today.getHours() >= 8) {
-    today.setDate(today.getDate() + 1);
+/* ADD TO CART */
+
+function addToCart(name, price) {
+
+    cart.push({
+        name: name,
+        price: price
+    });
+
+    total += price;
+
+    updateCart();
+
+    alert(name + " added to cart!");
 }
 
-let yyyy = today.getFullYear();
-let mm = String(today.getMonth() + 1).padStart(2, "0");
-let dd = String(today.getDate()).padStart(2, "0");
 
-let minDate = `${yyyy}-${mm}-${dd}`;
+/* UPDATE CART */
 
-dateInput.min = minDate;
-dateInput.value = minDate;
+function updateCart() {
 
-// WhatsApp Booking
-function sendWhatsApp() {
+    document.getElementById("cartCount").innerText =
+        cart.length;
 
-    let name = document.querySelector('input[type="text"]').value.trim();
-    let age = document.getElementById("age").value.trim();
-    let gender = document.getElementById("gender").value;
-    let email = document.querySelector('input[type="email"]').value.trim();
-    let mobile = document.querySelector('input[type="tel"]').value.trim();
+    document.getElementById("totalPrice").innerText =
+        total;
 
-    let village = document.getElementById("village").value.trim();
-    let postoffice = document.getElementById("postoffice").value.trim();
-    let district = document.getElementById("district").value.trim();
-    let state = document.getElementById("state").value.trim();
-    let pincode = document.getElementById("pincode").value.trim();
+    let html = "";
 
-    let doctorName = doctor.options[doctor.selectedIndex].text;
-    let doctorFee = doctor.value;
+    cart.forEach(function(item, index) {
 
-    let date = dateInput.value;
-    let time = timeInput.value;
+        html += `
+            <div class="cart-item">
 
-    let problem = document.querySelector("textarea").value.trim();
+                <span>${item.name}</span>
 
-    if (
-        name === "" ||
-        age === "" ||
-        gender === "" ||
-        email === "" ||
-        mobile === "" ||
-        village === "" ||
-        postoffice === "" ||
-        district === "" ||
-        state === "" ||
-        pincode === "" ||
-        doctor.value === "" ||
-        date === "" ||
-        time === ""
-    ) {
-        alert("Please fill all required fields.");
+                <strong>
+                    ₹${item.price}
+                </strong>
+
+            </div>
+        `;
+
+    });
+
+    if (cart.length === 0) {
+
+        html = `
+            <p style="color:#aaa">
+                Your cart is empty.
+            </p>
+        `;
+
+    }
+
+    document.getElementById("cartItems").innerHTML = html;
+}
+
+
+/* OPEN CART */
+
+function openCart() {
+
+    document.getElementById("cartOverlay").style.display =
+        "flex";
+
+    updateCart();
+}
+
+
+/* CLOSE CART */
+
+function closeCart() {
+
+    document.getElementById("cartOverlay").style.display =
+        "none";
+}
+
+
+/* WHATSAPP ORDER */
+
+function checkout() {
+
+    if (cart.length === 0) {
+
+        alert("Please add an item first.");
+
         return;
     }
 
     let message =
-`🏥 MediBook Appointment
+        "Hello Urban Spice!%0A%0AI want to order:%0A";
 
-👤 Name : ${name}
+    cart.forEach(function(item) {
 
-🎂 Age : ${age}
+        message +=
+            "• " +
+            item.name +
+            " - ₹" +
+            item.price +
+            "%0A";
 
-🚻 Gender : ${gender}
+    });
 
-📱 Mobile : ${mobile}
+    message +=
+        "%0ATotal: ₹" +
+        total;
 
-📧 Email : ${email}
+    /*
+       IMPORTANT:
+       Replace 919876543210 with
+       the restaurant's WhatsApp number.
+    */
 
-🏠 Village : ${village}
+    let phone = "7352585780";
 
-📮 Post Office : ${postoffice}
-
-🏙️ District : ${district}
-
-🗺️ State : ${state}
-
-📌 PIN Code : ${pincode}
-
-👨‍⚕️ Doctor : ${doctorName}
-
-💰 Fee : ₹${doctorFee}
-
-📅 Date : ${date}
-
-⏰ Time : ${time}
-
-📝 Problem : ${problem}`;
-
-    let phone = "917352585780";
-
-    let url =
+    window.open(
         "https://wa.me/" +
         phone +
         "?text=" +
-        encodeURIComponent(message);
-
-    window.open(url, "_blank");
-                                      }// Demo Payment Button
-
-document.getElementById("payBtn").addEventListener("click", function () {
-
-    if (doctor.value === "") {
-        alert("Please select a doctor first.");
-        return;
-    }
-
-    alert(
-        "💳 Demo Payment\n\n" +
-        "Consultation Fee : ₹" + doctor.value +
-        "\n\nPayment feature will be activated in the next update."
+        message,
+        "_blank"
     );
+}
 
-});
+
+/* INITIAL */
+
+updateCart();
